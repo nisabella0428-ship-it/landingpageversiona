@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercadeo y Negocios Internacionales · UAO | Habla con quien ya lo vivió</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Fraunces (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Configuración de Tailwind con la paleta exacta solicitada -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'uao-beige': '#D8C3A5',   /* Café pastel / beige café */
+                        'uao-cream': '#F3EBDD',   /* Café claro / crema */
+                        'uao-white': '#FFFFFF',   /* Blanco */
+                        'uao-wine': '#7B1E26',    /* Rojo profundo / vinotinto */
+                        'uao-wine-dark': '#5E151B',
+                        'uao-brown': '#4A352B',   /* Café oscuro para textos */
+                        'uao-brown-light': '#755A4D',
+                    },
+                    fontFamily: {
+                        serif: ['Fraunces', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'editorial': '1.75rem',
+                        'pill': '9999px',
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(74, 53, 43, 0.08)',
+                        'wine': '0 14px 30px -8px rgba(123, 30, 38, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos editoriales complementarios y transiciones suaves */
+        body {
+            background-color: #FFFFFF;
+            color: #4A352B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Textura sutil de papel editorial en secciones crema */
+        .paper-texture {
+            background-color: #F3EBDD;
+            background-image: radial-gradient(rgba(74, 53, 43, 0.04) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        /* Animación suave para el acordeón de FAQ */
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .accordion-item.active .accordion-content {
+            grid-template-rows: 1fr;
+        }
+        .accordion-inner {
+            overflow: hidden;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Estilo editorial tipo scrapbook para imágenes */
+        .scrapbook-tape {
+            background: rgba(216, 195, 165, 0.65);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 6px rgba(74, 53, 43, 0.08);
+        }
+
+        /* Personalización de inputs del formulario */
+        .editorial-input {
+            transition: all 0.25s ease;
+        }
+        .editorial-input:focus {
+            outline: none;
+            border-color: #7B1E26;
+            box-shadow: 0 0 0 4px rgba(123, 30, 38, 0.08);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-uao-wine selection:text-white">
+
+    <!-- =====================================================================
+         NAVEGACIÓN MINIMALISTA (Sin botones distractores, enfoque editorial)
+    ====================================================================== -->
+    <header class="sticky top-0 z-40 bg-uao-white/90 backdrop-blur-md border-b border-uao-beige/40">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+            <!-- Identidad Institucional UAO -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-uao-wine flex items-center justify-center text-white font-serif font-bold text-lg tracking-tight">
+                    U
+                </div>
+                <div class="leading-tight">
+                    <span class="block text-xs uppercase tracking-[0.18em] font-semibold text-uao-wine">UAO</span>
+                    <span class="block text-xs sm:text-sm font-medium text-uao-brown/80">Universidad Autónoma de Occidente</span>
+                </div>
+            </div>
+
+            <!-- Etiqueta de programa / Navegación sutil -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-uao-brown/80">
+                <a href="#desde-adentro" class="hover:text-uao-wine transition-colors">La carrera desde adentro</a>
+                <a href="#experiencia-real" class="hover:text-uao-wine transition-colors">Experiencia real</a>
+                <a href="#preguntas" class="hover:text-uao-wine transition-colors">Preguntas frecuentes</a>
+            </div>
+
+            <!-- Acceso directo discreto en móvil/desktop hacia la única acción -->
+            <a href="#contacto" class="text-xs sm:text-sm font-semibold text-uao-wine hover:text-uao-wine-dark underline underline-offset-4 decoration-uao-beige hover:decoration-uao-wine transition-all">
+                Quiero hablar con alguien →
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- =====================================================================
+             2. HERO SECTION — PRIMERA IMPRESIÓN (Composición Asimétrica Editorial)
+        ====================================================================== -->
+        <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 overflow-hidden bg-uao-white">
+            <!-- Forma orgánica decorativa sutil en el fondo -->
+            <div class="absolute top-12 right-[-10%] w-[480px] h-[480px] rounded-full bg-uao-cream/80 blur-3xl -z-10 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-[-5%] w-[320px] h-[320px] rounded-full bg-uao-beige/25 blur-2xl -z-10 pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-5 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                    
+                    <!-- Columna Izquierda: Narrativa, Etiqueta y Único CTA -->
+                    <div class="lg:col-span-7 space-y-7">
+                        <!-- Etiqueta visual solicitada -->
+                        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-pill bg-uao-cream border border-uao-beige/70">
+                            <span class="w-2 h-2 rounded-full bg-uao-wine animate-pulse"></span>
+                            <span class="text-xs sm:text-sm font-semibold tracking-wide text-uao-brown">
+                                Mercadeo y Negocios Internacionales · UAO
+                            </span>
+                        </div>
+
+                        <!-- Titular principal grande, elegante y protagonista -->
+                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold text-uao-brown leading-[1.12] tracking-tight">
+                            Habla con quien ya estudió <span class="italic font-normal text-uao-wine">Mercadeo y Negocios Internacionales.</span>
+                        </h1>
+
+                        <!-- Frase corta, emocional y cercana -->
+                        <p class="text-lg sm:text-xl text-uao-brown/85 font-normal leading-relaxed max-w-xl">
+                            Elegir tu carrera es más fácil cuando escuchas a alguien que ya vivió el camino. Resuelve tus dudas reales sin folletos ni discursos complicados.
+                        </p>
+
+                        <!-- Botón principal destacado en rojo profundo hacia el formulario -->
+                        <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
+                            <a href="#contacto" 
+                               class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-pill bg-uao-wine hover:bg-uao-wine-dark text-white font-semibold text-base sm:text-lg shadow-wine hover:-translate-y-0.5 transition-all duration-300">
+                                <span>Quiero hablar con alguien</span>
+                                <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
+                            </a>
+                            <span class="text-xs sm:text-sm text-uao-brown/65 flex items-center gap-2 pl-1">
+                                <i data-lucide="sparkles" class="w-4 h-4 text-uao-wine"></i>
+                                Conversación cercana con estudiantes o egresadas
+                            </span>
+                        </div>
+
+                        <!-- Microdetalle editorial inferior -->
+                        <div class="pt-6 border-t border-uao-beige/60 flex items-center gap-6 text-xs uppercase tracking-[0.14em] text-uao-brown/60">
+                            <span>01 / Orientación real</span>
+                            <span>•</span>
+                            <span>Cali · Campus UAO</span>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Composición Visual Tipo Scrapbook Editorial -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <!-- Detalle cinta adhesiva superior tipo scrapbook -->
+                            <div class="scrapbook-tape w-28 h-7 -rotate-3 absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 rounded-sm"></div>
+
+                            <!-- Tarjeta principal de fotografía -->
+                            <div class="relative rounded-editorial overflow-hidden bg-uao-cream p-3 border border-uao-beige/80 shadow-soft rotate-1 hover:rotate-0 transition-transform duration-500">
+                                <div class="aspect-[4/5] rounded-[1.25rem] overflow-hidden bg-uao-beige/30 relative">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" 
+                                        onerror="this.src='https://placehold.co/800x1000/F3EBDD/4A352B?text=Estudiantes+UAO+Conversando'"
+                                        alt="Estudiantes universitarias jóvenes conversando en un entorno creativo del campus" 
+                                        class="w-full h-full object-cover object-center"
+                                    >
+                                    <!-- Degradado suave inferior para legibilidad -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-uao-brown/45 via-transparent to-transparent"></div>
+                                    
+                                    <!-- Nota manuscrita / editorial dentro de la foto -->
+                                    <div class="absolute bottom-4 left-4 right-4 bg-uao-white/95 backdrop-blur-sm p-4 rounded-2xl border border-uao-beige/60">
+                                        <p class="font-serif italic text-sm sm:text-base text-uao-brown">
+                                            “Tener a alguien que te cuente cómo son las clases, los proyectos y el ambiente cambia por completo la decisión.”
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Elemento gráfico flotante lateral -->
+                            <div class="hidden sm:flex items-center gap-3 absolute -bottom-6 -left-6 bg-uao-cream border border-uao-beige px-4 py-3 rounded-2xl shadow-soft -rotate-2">
+                                <div class="w-10 h-10 rounded-full bg-uao-wine/10 text-uao-wine flex items-center justify-center">
+                                    <i data-lucide="message-circle-heart" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-uao-brown">De par a par</p>
+                                    <p class="text-[11px] text-uao-brown/75">Sin presión comercial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. SECCIÓN — ¿Y SI PUDIERAS CONOCER LA CARRERA DESDE ADENTRO?
+        ====================================================================== -->
+        <section id="desde-adentro" class="py-20 lg:py-28 paper-texture border-y border-uao-beige/60">
+            <div class="max-w-6xl mx-auto px-5 sm:px-8">
+                
+                <!-- Encabezado Editorial de Sección -->
+                <div class="max-w-2xl mb-14 lg:mb-16">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-uao-wine block mb-3">
+                        02 · Exploración vocacional
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-uao-brown leading-tight">
+                        ¿Y si pudieras conocer la carrera desde adentro?
+                    </h2>
+                    <p class="mt-4 text-base sm:text-lg text-uao-brown/80 leading-relaxed">
+                        Más allá del plan de estudios, descubre cómo se vive el día a día y hacia dónde puede llevarte esta decisión.
+                    </p>
+                </div>
+
+                <!-- Tres bloques visuales con estética diferenciada pero coherente -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- BLOQUE 1: ¿Es para mí? (Fondo Blanco limpio con acentos editoriales) -->
+                    <article class="lg:col-span-4 bg-uao-white rounded-editorial p-7 sm:p-8 border border-uao-beige/80 shadow-soft flex flex-col justify-between relative overflow-hidden">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="px-3.5 py-1 rounded-pill bg-uao-cream text-uao-wine text-xs font-bold tracking-wide">
+                                    01 · Perfil
+                                </span>
+                                <div class="w-10 h-10 rounded-full bg-uao-cream flex items-center justify-center text-uao-brown">
+                                    <i data-lucide="compass" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+
+                            <h3 class="font-serif text-2xl sm:text-[1.7rem] font-semibold text-uao-brown mb-4">
+                                ¿Es para mí?
+                            </h3>
+
+                            <p class="text-uao-brown/85 text-sm sm:text-base leading-relaxed mb-6">
+                                Mercadeo y Negocios Internacionales combina <strong>creatividad, estrategia, análisis de mercados, comunicación, marcas y oportunidades globales</strong> en un mismo lugar.
+                            </p>
+                        </div>
+
+                        <!-- Cita destacada solicitada -->
+                        <div class="p-5 rounded-2xl bg-uao-cream/80 border-l-4 border-uao-wine">
+                            <p class="font-serif italic text-uao-brown text-sm sm:text-[0.95rem] leading-relaxed">
+                                “Si te gusta entender las personas, crear ideas, descubrir cómo funcionan las marcas y explorar nuevas oportunidades, aquí puede comenzar tu camino.”
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- BLOQUE 2: ¿Qué puedo hacer después? (Fondo Café Pastel #D8C3A5 con etiquetas explorables) -->
+                    <article class="lg:col-span-4 bg-uao-beige/45 rounded-editorial p-7 sm:p-8 border border-uao-beige shadow-soft flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="px-3.5 py-1 rounded-pill bg-uao-white text-uao-brown text-xs font-bold tracking-wide">
+                                    02 · Futuro profesional
+                                </span>
+                                <div class="w-10 h-10 rounded-full bg-uao-white flex items-center justify-center text-uao-wine">
+                                    <i data-lucide="globe-2" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+
+                            <h3 class="font-serif text-2xl sm:text-[1.7rem] font-semibold text-uao-brown mb-3">
+                                ¿Qué puedo hacer después?
+                            </h3>
+                            <p class="text-uao-brown/80 text-sm mb-6">
+                                Explora los universos donde podrás conectar estrategia local con visión global:
+                            </p>
+
+                            <!-- Etiquetas / Tarjetas modernas interactivas -->
+                            <div class="flex flex-wrap gap-2.5">
+                                <span class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-uao-white text-uao-brown text-xs sm:text-sm font-medium border border-uao-beige/60 shadow-sm hover:border-uao-wine transition-colors">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-uao-wine shrink-0"></i>
+                                    Marketing y estrategia de marca
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-uao-white text-uao-brown text-xs sm:text-sm font-medium border border-uao-beige/60 shadow-sm hover:border-uao-wine transition-colors">
+                                    <i data-lucide="megaphone" class="w-4 h-4 text-uao-wine shrink-0"></i>
+                                    Publicidad y comunicación
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-uao-white text-uao-brown text-xs sm:text-sm font-medium border border-uao-beige/60 shadow-sm hover:border-uao-wine transition-colors">
+                                    <i data-lucide="search" class="w-4 h-4 text-uao-wine shrink-0"></i>
+                                    Investigación de mercados
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-uao-white text-uao-brown text-xs sm:text-sm font-medium border border-uao-beige/60 shadow-sm hover:border-uao-wine transition-colors">
+                                    <i data-lucide="plane" class="w-4 h-4 text-uao-wine shrink-0"></i>
+                                    Negocios internacionales
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-uao-white text-uao-brown text-xs sm:text-sm font-medium border border-uao-beige/60 shadow-sm hover:border-uao-wine transition-colors">
+                                    <i data-lucide="briefcase" class="w-4 h-4 text-uao-wine shrink-0"></i>
+                                    Gestión comercial
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-uao-white text-uao-brown text-xs sm:text-sm font-medium border border-uao-beige/60 shadow-sm hover:border-uao-wine transition-colors">
+                                    <i data-lucide="rocket" class="w-4 h-4 text-uao-wine shrink-0"></i>
+                                    Emprendimiento y creación de empresas
+                                </span>
+                            </div>
+                        </div>
+
+                        <p class="mt-6 pt-4 border-t border-uao-brown/10 text-xs text-uao-brown/75">
+                            Un perfil versátil preparado para marcas nacionales e internacionales.
+                        </p>
+                    </article>
+
+                    <!-- BLOQUE 3: ¿Puedo emprender? (Composición visual con fotografía y marcador editable de testimonio) -->
+                    <article class="lg:col-span-4 bg-uao-white rounded-editorial p-7 sm:p-8 border border-uao-beige/80 shadow-soft flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-5">
+                                <span class="px-3.5 py-1 rounded-pill bg-uao-wine/10 text-uao-wine text-xs font-bold tracking-wide">
+                                    03 · Proyectos propios
+                                </span>
+                                <div class="w-10 h-10 rounded-full bg-uao-cream flex items-center justify-center text-uao-wine">
+                                    <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+
+                            <!-- Fotografía cálida de creatividad y proyecto propio -->
+                            <div class="aspect-[16/10] rounded-2xl overflow-hidden mb-5 bg-uao-cream border border-uao-beige/50">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" 
+                                    onerror="this.src='https://placehold.co/800x500/D8C3A5/4A352B?text=Proyectos+y+Emprendimiento'"
+                                    alt="Estudiantes desarrollando ideas de negocio y branding en cuadernos y laptop" 
+                                    class="w-full h-full object-cover"
+                                >
+                            </div>
+
+                            <h3 class="font-serif text-2xl sm:text-[1.7rem] font-semibold text-uao-brown mb-3">
+                                ¿Puedo emprender?
+                            </h3>
+
+                            <p class="text-uao-brown/85 text-sm sm:text-base leading-relaxed mb-5">
+                                También puedes transformar tus ideas en proyectos, desarrollar marcas, emprender y convertir aquello que te apasiona en una oportunidad.
+                            </p>
+                        </div>
+
+                        <!-- Marcador editable estricto (sin inventar testimonios reales) -->
+                        <div class="p-4 rounded-2xl bg-uao-cream border border-dashed border-uao-brown/35">
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="quote" class="w-4 h-4 text-uao-wine shrink-0 mt-0.5"></i>
+                                <p class="text-xs sm:text-sm font-medium text-uao-brown/90 italic">
+                                    [Insertar testimonio real de estudiante o egresada]
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             5. PREGUNTAS FRECUENTES (Antes del formulario según estrategia Versión A)
+        ====================================================================== -->
+        <section id="preguntas" class="py-20 lg:py-28 paper-texture border-t border-uao-beige/60">
+            <div class="max-w-3xl mx-auto px-5 sm:px-8">
+                
+                <div class="text-center mb-12 sm:mb-14">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-uao-wine block mb-3">
+                        04 · Claridad antes de decidir
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-uao-brown">
+                        Sabemos que tienes preguntas.
+                    </h2>
+                </div>
+
+                <!-- Lista de Acordeón con exactamente las 3 preguntas solicitadas -->
+                <div class="space-y-4">
+                    
+                    <!-- Pregunta 1 -->
+                    <div class="accordion-item rounded-2xl border border-uao-beige/80 bg-uao-white overflow-hidden transition-colors shadow-sm">
+                        <button type="button" class="accordion-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer" aria-expanded="false">
+                            <span class="font-serif text-lg sm:text-xl font-medium text-uao-brown">
+                                ¿Qué se estudia en Mercadeo y Negocios Internacionales?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-uao-cream border border-uao-beige flex items-center justify-center text-uao-wine shrink-0">
+                                <i data-lucide="plus" class="accordion-icon w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <div class="px-6 pb-6 pt-3 text-sm sm:text-base text-uao-brown/85 leading-relaxed border-t border-uao-beige/40">
+                                    <span class="block text-xs italic text-uao-brown/80 bg-uao-cream/70 p-3.5 rounded-xl border border-dashed border-uao-beige">
+                                        [Respuesta editable: completar posteriormente con la descripción oficial del plan de estudios, enfoque y áreas de formación de Mercadeo y Negocios Internacionales en la UAO].
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="accordion-item rounded-2xl border border-uao-beige/80 bg-uao-white overflow-hidden transition-colors shadow-sm">
+                        <button type="button" class="accordion-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer" aria-expanded="false">
+                            <span class="font-serif text-lg sm:text-xl font-medium text-uao-brown">
+                                ¿En qué áreas puedo trabajar cuando me gradúe?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-uao-cream border border-uao-beige flex items-center justify-center text-uao-wine shrink-0">
+                                <i data-lucide="plus" class="accordion-icon w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <div class="px-6 pb-6 pt-3 text-sm sm:text-base text-uao-brown/85 leading-relaxed border-t border-uao-beige/40">
+                                    <span class="block text-xs italic text-uao-brown/80 bg-uao-cream/70 p-3.5 rounded-xl border border-dashed border-uao-beige">
+                                        [Respuesta editable: completar con las oportunidades profesionales y el perfil ocupacional oficial del programa publicado por la UAO].
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="accordion-item rounded-2xl border border-uao-beige/80 bg-uao-white overflow-hidden transition-colors shadow-sm">
+                        <button type="button" class="accordion-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer" aria-expanded="false">
+                            <span class="font-serif text-lg sm:text-xl font-medium text-uao-brown">
+                                ¿La carrera ofrece oportunidades de emprendimiento e internacionalización?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-uao-cream border border-uao-beige flex items-center justify-center text-uao-wine shrink-0">
+                                <i data-lucide="plus" class="accordion-icon w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <div class="px-6 pb-6 pt-3 text-sm sm:text-base text-uao-brown/85 leading-relaxed border-t border-uao-beige/40">
+                                    <span class="block text-xs italic text-uao-brown/80 bg-uao-cream/70 p-3.5 rounded-xl border border-dashed border-uao-beige">
+                                        [Respuesta editable: completar con información oficial de la UAO sobre movilidad internacional, intercambios y apoyo al emprendimiento].
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             6. SECCIÓN DE CONVERSIÓN — FORMULARIO AL FINAL
+        ====================================================================== -->
+        <section id="contacto" class="py-20 lg:py-28 bg-uao-white border-t border-uao-beige/70 relative">
+            <div class="max-w-4xl mx-auto px-5 sm:px-8">
+                
+                <!-- Tarjeta Principal del Formulario -->
+                <div class="bg-uao-cream/40 rounded-[2rem] p-7 sm:p-12 lg:p-14 border border-uao-beige shadow-soft relative overflow-hidden">
+                    
+                    <!-- Detalle superior decorativo en rojo profundo -->
+                    <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-uao-beige via-uao-wine to-uao-beige"></div>
+
+                    <div class="max-w-2xl mx-auto text-center mb-10">
+                        <span class="inline-block px-4 py-1.5 rounded-pill bg-uao-white border border-uao-beige/60 text-uao-wine text-xs font-bold uppercase tracking-[0.16em] mb-4">
+                            05 · Tu siguiente paso
+                        </span>
+                        <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold text-uao-brown leading-tight">
+                            ¿Quieres hablar con alguien que ya lo vivió?
+                        </h2>
+                        <p class="mt-4 text-base sm:text-lg text-uao-brown/80 leading-relaxed">
+                            Déjanos tus datos y te ayudaremos a conectar con una estudiante o egresada para que conozcas la carrera desde una experiencia real, resuelvas tus dudas y descubras si este camino es para ti.
+                        </p>
+                    </div>
+
+                    <!-- Formulario limpio, sin campo de teléfono/WhatsApp, solo los 5 campos solicitados -->
+                    <form id="leadForm" class="max-w-xl mx-auto space-y-6" novalidate>
+                        
+                        <!-- Campo 1: Nombre -->
+                        <div>
+                            <label for="nombre" class="block text-sm font-semibold text-uao-brown mb-2">
+                                Nombre <span class="text-uao-wine">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                required
+                                placeholder="¿Cómo te llamas?"
+                                class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-white border border-uao-beige text-uao-brown placeholder:text-uao-brown/45 text-base"
+                            >
+                        </div>
+
+                        <!-- Campo 2: Correo electrónico -->
+                        <div>
+                            <label for="correo" class="block text-sm font-semibold text-uao-brown mb-2">
+                                Correo electrónico <span class="text-uao-wine">*</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                id="correo" 
+                                name="correo" 
+                                required
+                                placeholder="tu.correo@ejemplo.com"
+                                class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-white border border-uao-beige text-uao-brown placeholder:text-uao-brown/45 text-base"
+                            >
+                        </div>
+
+                        <!-- Fila de 2 columnas en desktop: Año de graduación + Ciudad -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Campo 3: Año de graduación del colegio -->
+                            <div>
+                                <label for="graduacion" class="block text-sm font-semibold text-uao-brown mb-2">
+                                    Año de graduación del colegio <span class="text-uao-wine">*</span>
+                                </label>
+                                <select 
+                                    id="graduacion" 
+                                    name="graduacion" 
+                                    required
+                                    class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-white border border-uao-beige text-uao-brown text-base"
+                                >
+                                    <option value="" disabled selected>Selecciona un año</option>
+                                    <option value="2026">2026 (Este año)</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="ya-me-gradue">Ya me gradué del colegio</option>
+                                </select>
+                            </div>
+
+                            <!-- Campo 4: Ciudad -->
+                            <div>
+                                <label for="ciudad" class="block text-sm font-semibold text-uao-brown mb-2">
+                                    Ciudad <span class="text-uao-wine">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="ciudad" 
+                                    name="ciudad" 
+                                    required
+                                    placeholder="Ej. Cali, Palmira, Popayán..."
+                                    class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-white border border-uao-beige text-uao-brown placeholder:text-uao-brown/45 text-base"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Campo 5: ¿Quién te acompaña en esta decisión? (opcional) -->
+                        <div>
+                            <label for="acompanante" class="block text-sm font-semibold text-uao-brown mb-2">
+                                ¿Quién te acompaña en esta decisión? <span class="text-xs font-normal text-uao-brown/60">(opcional)</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="acompanante" 
+                                name="acompanante" 
+                                placeholder="Ej. Mi mamá, mi papá, mi familia, lo estoy explorando por mi cuenta..."
+                                class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-white border border-uao-beige text-uao-brown placeholder:text-uao-brown/45 text-base"
+                            >
+                        </div>
+
+                        <!-- Campo 2: Correo electrónico -->
+                        <div>
+                            <label for="correo" class="block text-sm font-semibold text-uao-brown mb-2">
+                                Correo electrónico <span class="text-uao-wine">*</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                id="correo" 
+                                name="correo" 
+                                required
+                                placeholder="tu.correo@ejemplo.com"
+                                class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-cream/40 border border-uao-beige text-uao-brown placeholder:text-uao-brown/45 text-base"
+                            >
+                        </div>
+
+                        <!-- Fila de 2 columnas en desktop: Año de graduación + Ciudad -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Campo 3: Año de graduación del colegio -->
+                            <div>
+                                <label for="graduacion" class="block text-sm font-semibold text-uao-brown mb-2">
+                                    Año de graduación del colegio <span class="text-uao-wine">*</span>
+                                </label>
+                                <select 
+                                    id="graduacion" 
+                                    name="graduacion" 
+                                    required
+                                    class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-cream/40 border border-uao-beige text-uao-brown text-base"
+                                >
+                                    <option value="" disabled selected>Selecciona un año</option>
+                                    <option value="2026">2026 (Este año)</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="ya-me-gradue">Ya me gradué del colegio</option>
+                                </select>
+                            </div>
+
+                            <!-- Campo 4: Ciudad -->
+                            <div>
+                                <label for="ciudad" class="block text-sm font-semibold text-uao-brown mb-2">
+                                    Ciudad <span class="text-uao-wine">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="ciudad" 
+                                    name="ciudad" 
+                                    required
+                                    placeholder="Ej. Cali, Palmira, Popayán..."
+                                    class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-cream/40 border border-uao-beige text-uao-brown placeholder:text-uao-brown/45 text-base"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Campo 5: ¿Quién te acompaña en esta decisión? (opcional) -->
+                        <div>
+                            <label for="acompanante" class="block text-sm font-semibold text-uao-brown mb-2">
+                                ¿Quién te acompaña en esta decisión? <span class="text-xs font-normal text-uao-brown/60">(opcional)</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="acompanante" 
+                                name="acompanante" 
+                                placeholder="Ej. Mi mamá, mi papá, mi familia, lo estoy explorando por mi cuenta..."
+                                class="editorial-input w-full px-4 py-3.5 rounded-2xl bg-uao-cream/40 border border-uao-beige text-uao-brown placeholder:text-uao-brown/45 text-base"
+                            >
+                        </div>
+
+                        <!-- Casilla de autorización para el tratamiento de datos personales (Texto legal editable) -->
+                        <div class="pt-2">
+                            <label class="flex items-start gap-3.5 cursor-pointer group">
+                                <input 
+                                    type="checkbox" 
+                                    id="datos" 
+                                    name="datos" 
+                                    required
+                                    class="mt-1 w-5 h-5 rounded-md border-uao-beige text-uao-wine focus:ring-uao-wine accent-[#7B1E26] cursor-pointer shrink-0"
+                                >
+                                <span class="text-xs sm:text-[13px] text-uao-brown/75 leading-relaxed">
+                                    Autorizo el tratamiento de mis datos personales por parte de la Universidad Autónoma de Occidente (UAO) con el fin de gestionar este contacto académico. <span class="italic text-uao-brown/60">[Texto legal editable según política institucional vigente de protección de datos de la UAO].</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Mensaje de validación inline (reemplaza cualquier alert) -->
+                        <div id="formFeedback" class="hidden p-4 rounded-2xl text-sm font-medium"></div>
+
+                        <!-- Único Botón Principal de Conversión -->
+                        <div class="pt-3">
+                            <button 
+                                type="submit" 
+                                class="w-full py-4 px-8 rounded-pill bg-uao-wine hover:bg-uao-wine-dark text-white font-semibold text-base sm:text-lg shadow-wine hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer"
+                            >
+                                <span>Quiero hablar con alguien</span>
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <!-- Estado de confirmación tras enviar el formulario -->
+                    <div id="formSuccess" class="hidden max-w-lg mx-auto text-center py-8 space-y-5">
+                        <div class="w-16 h-16 rounded-full bg-uao-white border border-uao-beige text-uao-wine flex items-center justify-center mx-auto">
+                            <i data-lucide="check" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-uao-brown">
+                            ¡Gracias, <span id="userNameDisplay" class="text-uao-wine italic"></span>!
+                        </h3>
+                        <p class="text-uao-brown/85 text-base leading-relaxed">
+                            Hemos recibido tus datos. Pronto te escribiremos a tu correo electrónico para conectarte con una estudiante o egresada de <strong>Mercadeo y Negocios Internacionales</strong> de la UAO.
+                        </p>
+                        <div class="pt-2">
+                            <button type="button" onclick="resetForm()" class="text-xs font-semibold uppercase tracking-wider text-uao-brown/60 hover:text-uao-wine underline underline-offset-4 cursor-pointer">
+                                Enviar otra consulta
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             6. PREGUNTAS FRECUENTES (Acordeón Elegante y Minimalista)
+        ====================================================================== -->
+        <section id="preguntas" class="py-20 lg:py-28 bg-uao-white">
+            <div class="max-w-3xl mx-auto px-5 sm:px-8">
+                
+                <div class="text-center mb-12 sm:mb-14">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-uao-wine block mb-3">
+                        05 · Claridad antes de decidir
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-uao-brown">
+                        Sabemos que tienes preguntas.
+                    </h2>
+                </div>
+
+                <!-- Lista de Acordeón con exactamente las 3 preguntas solicitadas -->
+                <div class="space-y-4">
+                    
+                    <!-- Pregunta 1 -->
+                    <div class="accordion-item rounded-2xl border border-uao-beige/80 bg-uao-cream/30 overflow-hidden transition-colors">
+                        <button type="button" class="accordion-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer" aria-expanded="false">
+                            <span class="font-serif text-lg sm:text-xl font-medium text-uao-brown">
+                                ¿Qué se estudia en Mercadeo y Negocios Internacionales?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-uao-white border border-uao-beige flex items-center justify-center text-uao-wine shrink-0">
+                                <i data-lucide="plus" class="accordion-icon w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <div class="px-6 pb-6 pt-1 text-sm sm:text-base text-uao-brown/85 leading-relaxed border-t border-uao-beige/40">
+                                    El programa integra la comprensión del comportamiento del consumidor, la creación y gestión de marcas, la investigación de mercados y las estrategias comerciales con el análisis de entornos globales y operaciones de negocios internacionales. 
+                                    <span class="block mt-2 text-xs italic text-uao-brown/70 bg-uao-white p-3 rounded-xl border border-dashed border-uao-beige">
+                                        [Espacio editable para detallar créditos, duración o asignaturas específicas según el plan de estudios oficial vigente de la UAO].
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="accordion-item rounded-2xl border border-uao-beige/80 bg-uao-cream/30 overflow-hidden transition-colors">
+                        <button type="button" class="accordion-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer" aria-expanded="false">
+                            <span class="font-serif text-lg sm:text-xl font-medium text-uao-brown">
+                                ¿En qué áreas puedo trabajar cuando me gradúe?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-uao-white border border-uao-beige flex items-center justify-center text-uao-wine shrink-0">
+                                <i data-lucide="plus" class="accordion-icon w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <div class="px-6 pb-6 pt-1 text-sm sm:text-base text-uao-brown/85 leading-relaxed border-t border-uao-beige/40">
+                                    Podrás desempeñarte en áreas de marketing y estrategia de marca, publicidad y comunicación, investigación de mercados, gestión comercial, desarrollo de negocios internacionales, exportación e importación, o liderando tu propio emprendimiento.
+                                    <span class="block mt-2 text-xs italic text-uao-brown/70 bg-uao-white p-3 rounded-xl border border-dashed border-uao-beige">
+                                        [Espacio editable para complementar con el perfil ocupacional oficial publicado en el portal de la UAO].
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="accordion-item rounded-2xl border border-uao-beige/80 bg-uao-cream/30 overflow-hidden transition-colors">
+                        <button type="button" class="accordion-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer" aria-expanded="false">
+                            <span class="font-serif text-lg sm:text-xl font-medium text-uao-brown">
+                                ¿La carrera ofrece oportunidades de emprendimiento e internacionalización?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-uao-white border border-uao-beige flex items-center justify-center text-uao-wine shrink-0">
+                                <i data-lucide="plus" class="accordion-icon w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <div class="px-6 pb-6 pt-1 text-sm sm:text-base text-uao-brown/85 leading-relaxed border-t border-uao-beige/40">
+                                    Sí. La formación fomenta tanto la creación y validación de ideas de negocio propias como la apertura hacia mercados globales.
+                                    <span class="block mt-2 text-xs italic text-uao-brown/70 bg-uao-white p-3 rounded-xl border border-dashed border-uao-beige">
+                                        [Espacio editable para insertar información verificada sobre convenios internacionales, intercambios, doble titulación o ecosistemas de emprendimiento vigentes en la UAO].
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         7. CTA FIJO DURANTE LA NAVEGACIÓN — STICKY BUTTON (Fundamental Versión A)
+    ====================================================================== -->
+    <div id="stickyCtaContainer" class="fixed bottom-4 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 z-50 transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+        <a href="#contacto" 
+           class="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3.5 sm:py-4 rounded-pill bg-uao-wine hover:bg-uao-wine-dark text-white font-semibold text-sm sm:text-base shadow-wine border border-white/15 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5">
+            <span class="w-2 h-2 rounded-full bg-uao-cream animate-ping"></span>
+            <span>Quiero hablar con alguien</span>
+            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+    </div>
+
+    <!-- =====================================================================
+         9. FOOTER MINIMALISTA
+    ====================================================================== -->
+    <footer class="bg-uao-cream border-t border-uao-beige pt-14 pb-24 sm:pb-14">
+                        Programa de Mercadeo y Negocios Internacionales
+                    </p>
+                </div>
+
+                <!-- Contacto institucional editable y Enlace editable al programa -->
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs sm:text-sm text-uao-brown/80">
+                    <div class="px-4 py-2.5 rounded-xl bg-uao-white/80 border border-dashed border-uao-beige">
+                        <span class="font-semibold text-uao-brown block text-[11px] uppercase tracking-wider">Contacto institucional</span>
+                        <span>[Correo o canal institucional editable UAO]</span>
+                    </div>
+                    <a href="#contacto" class="px-4 py-2.5 rounded-xl bg-uao-white/80 border border-dashed border-uao-beige hover:border-uao-wine transition-colors block">
+                        <span class="font-semibold text-uao-brown block text-[11px] uppercase tracking-wider">Sitio oficial</span>
+                        <span class="text-uao-wine underline underline-offset-2">[Enlace editable a página oficial del programa]</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Línea inferior discreta -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-uao-brown/65">
+                <p>Campaña de orientación vocacional · Mercadeo y Negocios Internacionales UAO.</p>
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-uao-beige inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-uao-wine inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-uao-brown inline-block"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         LÓGICA INTERACTIVA (Acordeón FAQ, Validación de Formulario y UX)
+    ====================================================================== -->
+    <script>
+        // Inicializar iconos de Lucide
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initAccordion();
+            initForm();
+            initStickyCta();
+        });
+
+        // 0. Control inteligente del botón fijo (Sticky CTA) durante el scroll
+        function initStickyCta() {
+            const stickyBtn = document.getElementById('stickyCtaContainer');
+            const contactSection = document.getElementById('contacto');
+            if (!stickyBtn || !contactSection) return;
+
+            const updateVisibility = () => {
+                const scrollY = window.scrollY;
+                const contactRect = contactSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Mostrar después de bajar del Hero inicial (320px) y ocultar cuando el formulario ya está visible en pantalla
+                const pastHero = scrollY > 320;
+                const formInView = contactRect.top < windowHeight - 120;
+
+                if (pastHero && !formInView) {
+                    stickyBtn.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+                    stickyBtn.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+                } else {
+                    stickyBtn.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+                    stickyBtn.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+                }
+            };
+
+            window.addEventListener('scroll', updateVisibility, { passive: true });
+            window.addEventListener('resize', updateVisibility, { passive: true });
+            updateVisibility();
+        }
+                });
+            });
+        }
+
+        // 2. Mensaje de ayuda discreto para el espacio editable del Reel
+        function toggleReelInfo() {
+            const helper = document.getElementById('reel-helper');
+            if (helper) {
+                helper.classList.toggle('hidden');
+            }
+        }
+
+        // 3. Validación amigable del formulario (sin alert() ni popups intrusivos)
+        function initForm() {
+            const form = document.getElementById('leadForm');
+            const feedback = document.getElementById('formFeedback');
+            const successBox = document.getElementById('formSuccess');
+            const userNameDisplay = document.getElementById('userNameDisplay');
+
+            if (!form) return;
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                feedback.classList.add('hidden');
+
+                const nombre = document.getElementById('nombre').value.trim();
+                const correo = document.getElementById('correo').value.trim();
+                const graduacion = document.getElementById('graduacion').value;
+                const ciudad = document.getElementById('ciudad').value.trim();
+                const datos = document.getElementById('datos').checked;
+
+                // Validaciones básicas claras
+                if (!nombre || !correo || !graduacion || !ciudad) {
+                    showFeedback('Por favor completa los campos obligatorios marcados con * para poder conectarte.');
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(correo)) {
+                    showFeedback('Por favor ingresa un correo electrónico válido.');
+                    return;
+                }
+
+                if (!datos) {
+                    showFeedback('Por favor marca la casilla de autorización de tratamiento de datos personales.');
+                    return;
+                }
+
+                // Mostrar confirmación elegante en la misma tarjeta
+                userNameDisplay.textContent = nombre.split(' ')[0];
+                form.classList.add('hidden');
+                successBox.classList.remove('hidden');
+            });
+        }
+
+        function showFeedback(message) {
+            const feedback = document.getElementById('formFeedback');
+            feedback.textContent = message;
+            feedback.className = 'p-4 rounded-2xl text-sm font-medium bg-uao-wine/10 text-uao-wine border border-uao-wine/20 block';
+        }
+
+        function resetForm() {
+            const form = document.getElementById('leadForm');
+            const successBox = document.getElementById('formSuccess');
+            form.reset();
+            successBox.classList.add('hidden');
+            form.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
